@@ -20,6 +20,11 @@ export default async function (state) {
     // console.log("state.filter.query", state.filter.query)
   })
 
+  form.addEventListener('reset', async function () {
+    state.filter.query = '';
+    await state.filter.getResults();
+    view.changeButtonText(state.filter.result.length);
+  })
 
 
 }
