@@ -12,6 +12,7 @@ export default async function (state) {
   view.changeButtonText(state.filter.result.length);
 
   const form = document.querySelector('#filter-form');
+
   form.addEventListener('change', async function (event) {
     event.preventDefault();
     state.filter.query = view.getInput();
@@ -24,6 +25,11 @@ export default async function (state) {
     state.filter.query = '';
     await state.filter.getResults();
     view.changeButtonText(state.filter.result.length);
+  })
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    console.log('submit')
   })
 
 

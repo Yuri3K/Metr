@@ -98,7 +98,7 @@ export function render(params) {
           </div>
       </div>
       <div class="filter__buttons">
-          <button type="button" class="filter__show">Показать 119 объектов</button>
+          <button type="submit" class="filter__show">Показать 119 объектов</button>
           <button type="reset" class="filter__reset">Сбросить фильтр</button>
       </div>
   </form>
@@ -108,8 +108,18 @@ export function render(params) {
 }
 
 export function changeButtonText(number) {
+
+    let message;
+
+    if (number > 0) {
+        message = `Показать ${number} объектов`
+    } else message = 'Объекты не найдены';
+
     const btn = document.querySelector('.filter__show');
-    btn.innerText = `Показать ${number} объектов`
+    btn.innerText = message;
+
+    btn.disabled = number === 0 ? true : false;
+
 }
 
 
