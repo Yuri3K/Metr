@@ -1,4 +1,5 @@
 import homepage from './pages/homePage';
+import bids from './pages/bidsPage';
 import favourites from './pages/favourites';
 import singleItem from './pages/singleItemPage';
 import erorr from './pages/errorPage';
@@ -7,33 +8,23 @@ import erorr from './pages/errorPage';
 console.log(1111)
 
 const routes = [
-  { route: '/', name: 'Homepage' },
-  { route: 'bids', name: 'BidsPage' },
-  { route: 'favourites', name: 'Favourites' },
-  { route: 'singleItem', name: 'singleItemPage' },
-  { route: 'error', name: 'ErrorPage' },
+  { route: '/', component: 'Homepage' },
+  { route: 'bids', component: 'BidsPage' },
+  { route: 'favourites', component: 'Favourites' },
+  { route: 'singleItem', component: 'singleItemPage' },
+  { route: 'error', component: 'ErrorPage' },
 ];
 
-function getPageRoute(routes, pageName) {
-  const currentRoute = routes.filter(route => {
-    if (route.name === pageName) {
-      return true
-    }
-  });
+function getRoute(event) {
+  const splitRoute = window.location.hash.split('/');
+  let currentPage = splitRoute[1] === '' ? '/' : splitRoute[1];
+  console.log('currentPage', currentPage)
+}
+// getRoute()
 
-  return currentRoute[0].route
+function renderPageByRoute() {
+
 }
 
-console.log(getPageRoute(routes, 'Favourites'))
-
-const menu = document.querySelector('#app ul');
-menu.addEventListener('click', changePage)
-
-function changePage(event) {
-  const target = event.target;
-  if (target.tagName === 'A') {
-    event.preventDefault();
-    console.log('location', window.location.hash)
-    console.log(target)
-  }
-}
+// document.addEventListener('load', renderPageByRoute);
+document.addEventListener('hashchange', getRoute);
