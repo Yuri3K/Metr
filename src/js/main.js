@@ -4,6 +4,8 @@ import Favourites from './pages/favourites';
 import singleItemPage from './pages/singleItemPage';
 import ErrorPage from './pages/errorPage';
 
+const state = {};
+
 const routes = [
   { route: '/', component: Homepage },
   { route: 'bids', component: BidsPage },
@@ -12,21 +14,20 @@ const routes = [
   { route: 'error', component: ErrorPage },
 ];
 
-function getRoute(routes, page) {
+function getComponentByPath(routes, page) {
   return routes.find(item => item.route === page)
 }
 
-function renderPageByRoute() {
+function render() {
   const splitRoute = location.hash.split('/');
-  let currentPage = splitRoute[1] === '' ? '/' : splitRoute[1];
-  currentPage = !currentPage ? '/' : currentPage;
+  let currentPage = splitRoute[0] === '' ? '/' : splitRoute[1];
+  currentPage = currentPage === '' ? '/' : currentPage;
 
-  const result = getRoute(routes, currentPage)
+  const result = getComponentByPath(routes, currentPage)
 
   const { component = ErrorPage } = result || {};
-  component.render()
-  console.log('component', component)
+  component(state)
 }
 
-window.addEventListener('load', renderPageByRoute);
-window.addEventListener('hashchange', renderPageByRoute);
+window.addEventListener('load', render);
+window.addEventListener('hashchange', render);
