@@ -1,33 +1,49 @@
-import Homepage from './pages/homePage';
-import BidsPage from './pages/bidsPage';
-import Favourites from './pages/favourites';
-import singleItemPage from './pages/singleItemPage';
-import ErrorPage from './pages/errorPage';
+class EventEmitter {
+  constructor() {
+    this.events = {};
+  }
 
-const state = {};
+  emit(eventName, data) {
+    const event = this.events[eventName];
+    if (event) {
+      event.forEach(fn => {
+        fn.call(null, data);
+      })
+    }
+  }
 
-const routes = [
-  { route: '/', component: Homepage },
-  { route: 'bids', component: BidsPage },
-  { route: 'favourites', component: Favourites },
-  { route: 'singleItemPage', component: singleItemPage },
-  { route: 'error', component: ErrorPage },
-];
+  subscribe(eventName, fn) {
+    if (!this.events[eventName]) {
+      this.events[eventName] = [];
+    }
+    this.events[eventName].push(fn);
 
-function getComponentByPath(routes, page) {
-  return routes.find(item => item.route === page)
+    return () => {
+      this.events[eventName] = this.events[eventName].filter(eventFn => fn !== eventFn)
+    }
+  }
 }
 
-function render() {
-  const splitRoute = location.hash.split('/');
-  let currentPage = splitRoute[0] === '' ? '/' : splitRoute[1];
-  currentPage = currentPage === '' ? '/' : currentPage;
 
-  const result = getComponentByPath(routes, currentPage)
+const input = document.querySelector('input');
+const btn = document.querySelector('button');
+const title = document.querySelector('h1');
 
-  const { component = ErrorPage } = result || {};
-  component(state)
-}
+let emitter = new EventEmitter();
 
-window.addEventListener('load', render);
-window.addEventListener('hashchange', render);
+const subscribe1 = emitter.subscribe('event:changeName', (obj) => {
+  title.innerHTML = `Your name is ${obj.name}`
+})
+
+const subscribe2 = emitter.subscribe('event:changeName', () => {
+  alert('Hello World')
+})
+
+console.log(emitter)
+
+
+btn.addEventListener('click', () => {
+  emitter.emit('event:changeName', { name: input.value })
+})
+
+subscribe2(); //Отписался от второго события

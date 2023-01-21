@@ -3,49 +3,30 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Главная - магазин "Квадратный метр"</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <title>Emitter</title>
     <link
         href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700,800|Oswald:700&display=swap&subset=cyrillic-ext"
         rel="stylesheet" />
 
     <style>
-        .preloader-holder {
-            width: 100%;
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .card__img img {
-            width: 200px;
-            height: 160px;
-            object-fit: contain;
+        input {
+            padding: 10px;
+            font-size: 18px;
+            line-height: 20px;
         }
 
-        .none {
-            display: none;
-        }
-
-        .object__photo-wrapper img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .button-favourite:focus {
-            outline: none;
-        }
-
-        a.btn-show-favourites:hover {
-            text-decoration: none;
-        }
-
-        .filter__show[disabled] {
-            background-color: #d68d8d;
-        }
-
-        .filter__show:disabled {
-            background-color: #c78787;
+        button {
+            font-size: 18px;
+            line-height: 20px;
+            padding: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -54,58 +35,12 @@
 
     <!-- content-wrapper -->
     <div class="content-wrapper">
-
-        <!-- top-panel -->
-        <header class="top-panel">
-            <div class="top-panel__container">
-                <div class="top-panel__title">
-                    интернет магазин недвижимости
-                </div>
-                <!-- <div class="top-panel__phone"><a href="tel:+8800557755">8 (800) 55-77-55</a></div> -->
-
-                <div class="top-panel__favourites">
-                    <a href="#/favourites" class="btn-show-favourites mr-5">
-                        <i class="fas fa-heart"></i> Избранное
-                    </a>
-
-                    <a href="#/bids" class="btn-show-favourites">
-                        <i class="fas fa-file-alt"></i> Заявки
-                    </a>
-                </div>
-            </div>
-        </header>
-        <!-- // top-panel -->
-
-        <!-- Logo -->
-        <div class="logo-wrapper">
-            <a href="index.html" class="logo">
-                <div class="logo__title">КВАДРАТНЫЙ МЕТР</div>
-                <div class="logo__subtitle">
-                    купить квартиру в один клик
-                </div>
-            </a>
-        </div>
-        <!-- // Logo -->
-
-
-        <!-- Application -->
-        <div id="app">
-        </div>
-        <!-- // Application -->
+        <input type="text">
+        <button type="button">Change name</button>
+        <h1>...</h1>
 
     </div>
     <!-- // content-wrapper -->
-
-    <footer class="footer">
-        <div class="contaier">
-            <p>
-                Учебный проект школы
-                <a href="https://webcademy.ru/">ВебКадеми.рф</a> с курса
-                <a href="https://webcademy.ru/jscourse/">JavaScript разработка</a>. Проект выполнил <a href="#">Имя
-                    Фамилия</a>.
-            </p>
-        </div>
-    </footer>
 </body>
 
 </html>
