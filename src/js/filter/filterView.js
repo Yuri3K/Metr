@@ -147,7 +147,6 @@ export function getInput() {
 
     const queryString = searchParams.toString();
     if (queryString) {
-        console.log('Object.fromEntries', Object.fromEntries(iterator))
         return '?' + queryString;
     } else return '';
 

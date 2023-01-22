@@ -6,7 +6,7 @@ export default async function (state) {
   if (!state.filter) state.filter = new Filter;
   await state.filter.getParams();
   await state.filter.getResults();
-  console.log(state)
+  state.results = state.filter.result;
 
   await view.render(state.filter.params);
   view.changeButtonText(state.filter.result.length)
@@ -16,6 +16,7 @@ export default async function (state) {
     event.preventDefault();
     state.filter.query = view.getInput();
     await state.filter.getResults();
+    state.results = state.filter.result;
     view.changeButtonText(state.filter.result.length)
   })
 

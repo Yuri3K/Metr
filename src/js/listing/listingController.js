@@ -1,7 +1,17 @@
 
+import * as view from './listingView';
+
 export default function (state) {
-  console.log('Listing')
+  view.render();
+
+  state.results.forEach(item => {
+    view.renderCard(item)
+  })
+
   state.emitter.subscribe('event:render-listing', () => {
-    console.log('Listing Started')
+    view.clearListingContainer();
+    state.results.forEach(item => {
+      view.renderCard(item)
+    })
   })
 }

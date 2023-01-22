@@ -6,15 +6,17 @@ import ErrorPage from './pages/errorPage';
 import EventEmitter from './utils/EventEmitter';
 
 const state = {
-  result: [],
+  results: [],
   emitter: new EventEmitter(),
 };
+
+// window.state = state
 
 const routes = [
   { route: '/', component: Homepage },
   { route: 'bids', component: BidsPage },
   { route: 'favourites', component: Favourites },
-  { route: 'singleItemPage', component: singleItemPage },
+  { route: 'item', component: singleItemPage },
   { route: 'error', component: ErrorPage },
 ];
 
@@ -26,6 +28,8 @@ function render() {
   const splitRoute = location.hash.split('/');
   let currentPage = splitRoute[0] === '' ? '/' : splitRoute[1];
   currentPage = currentPage === '' ? '/' : currentPage;
+
+  state.routeParams = splitRoute[2] ? splitRoute[2] : '';
 
   const result = getComponentByPath(routes, currentPage)
 
