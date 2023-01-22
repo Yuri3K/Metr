@@ -3,8 +3,12 @@ import BidsPage from './pages/bidsPage';
 import Favourites from './pages/favourites';
 import singleItemPage from './pages/singleItemPage';
 import ErrorPage from './pages/errorPage';
+import EventEmitter from './utils/EventEmitter';
 
-const state = {};
+const state = {
+  result: [],
+  emitter: new EventEmitter(),
+};
 
 const routes = [
   { route: '/', component: Homepage },
