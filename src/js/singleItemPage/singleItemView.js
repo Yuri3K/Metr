@@ -174,3 +174,17 @@ export function showModal() {
 export function hideModal() {
     document.querySelector('.modal-wrapper').classList.add('none')
 }
+
+
+export function getInput() {
+    const formData = {};
+    formData.name = document.querySelector('#form-name').value;
+    formData.phone = document.querySelector('#form-phone').value;
+
+    return formData;
+}
+
+export function clearForm() {
+    document.querySelector('#form-name').value = '';
+    document.querySelector('#form-phone').value = '';
+}

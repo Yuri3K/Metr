@@ -10,7 +10,7 @@ const state = {
   emitter: new EventEmitter(),
 };
 
-// window.state = state
+window.state = state
 
 const routes = [
   { route: '/', component: Homepage },
