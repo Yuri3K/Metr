@@ -4,13 +4,15 @@ import Favourites from './pages/favourites';
 import singleItemPage from './pages/singleItemPage';
 import ErrorPage from './pages/errorPage';
 import EventEmitter from './utils/EventEmitter';
+import Favs from './favourites/favouritesModel';
 
 const state = {
   results: [],
   emitter: new EventEmitter(),
+  favourites: new Favs(),
 };
 
-// window.state = state
+window.state = state
 
 const routes = [
   { route: '/', component: Homepage },

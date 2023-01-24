@@ -9,16 +9,18 @@ export function render() {
   document.getElementById('app').insertAdjacentHTML("beforeend", markup)
 }
 
-export function renderCard(object) {
+export function renderCard(object, isFav) {
+
+  // console.log(isFav)
 
   const markup = `<article class="col-md-4">
                         <!-- card -->
-                        <a href="#/item/${object.id}" class="card">
+                        <a href="#/item/${object.id}" class="card" data-id="${object.id}">
                             <div class="card__header">
                                 <div class="card__title">
                                     ЖК ${object.complex_name}
                                 </div>
-                                <div class="card__like">
+                                <div class="card__like ${isFav ? 'card__like--active' : ''}">
                                     <i class="fas fa-heart"></i>
                                 </div>
                             </div>
@@ -66,4 +68,12 @@ export function renderCard(object) {
 
 export function clearListingContainer() {
   document.querySelector('#card-container').innerHTML = '';
+}
+
+export function toggleFavouriteIconFav(element, isFav) {
+  if (isFav) {
+    element.classList.add('card__like--active');
+  } else {
+    element.classList.remove('card__like--active');
+  }
 }

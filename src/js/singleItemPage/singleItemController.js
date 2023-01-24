@@ -5,7 +5,7 @@ export default async function (state) {
 
   state.singleItem = new SingleItem(state.routeParams);
   await state.singleItem.getItem();
-  view.render(state.singleItem.result);
+  view.render(state.singleItem.result, state.favourites.isFav(state.singleItem.id));
   console.log('state', state.singleItem.result);
 
   // Open pop-up
@@ -45,6 +45,12 @@ export default async function (state) {
       })
     }
 
-
   })
+
+  // Add to favourites. Add/remove class active for button favourites
+  document.querySelector('#addToFavsBtn').addEventListener('click', () => {
+    state.favourites.toggleFav(state.singleItem.id)
+    view.toggleClassOfFavsBtn(state.favourites.isFav(state.singleItem.id))
+  })
+
 }

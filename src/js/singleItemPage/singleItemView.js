@@ -1,4 +1,4 @@
-export function render(object) {
+export function render(object, isFav) {
     const markup = `<div class="container p-0">
                     <div class="heading-1">
                         ${object.title}, ${object.square} м2 за ${object.price_total} ₽
@@ -27,15 +27,14 @@ export function render(object) {
                                 <div class="object__desc-art">ГЕН-112-42</div>
 
                                 <!-- Добавить в избранное -->
-                                <button class="button-favourite">
-                                    <i class="fas fa-heart"></i> <span>В избранное</span>
+                                <button id="addToFavsBtn" class="
+                                    button-favourite
+                                    ${isFav ? 'button-favourite--active' : ''}
+                                    ">
+                                    <i class="fas fa-heart"></i> <span>
+                                    ${isFav ? 'В избранном' : 'В избранное'}
+                                    </span>
                                 </button>
-
-                                <!-- В Избранном -->
-                                <button class="button-favourite button-favourite--active">
-                                    <i class="fas fa-heart"></i> <span>В избранном</span>
-                                </button>
-
                             </div>
 
                             <div class="object__desc-details">
@@ -187,4 +186,16 @@ export function getInput() {
 export function clearForm() {
     document.querySelector('#form-name').value = '';
     document.querySelector('#form-phone').value = '';
+}
+
+export function toggleClassOfFavsBtn(isFav) {
+    const btn = document.querySelector('#addToFavsBtn');
+
+    if (isFav) {
+        btn.classList.add('button-favourite--active');
+        btn.querySelector('span').textContent = 'В избранном'
+    } else {
+        btn.classList.remove('button-favourite--active');
+        btn.querySelector('span').textContent = 'В избранное'
+    }
 }
