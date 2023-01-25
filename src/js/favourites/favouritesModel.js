@@ -6,13 +6,13 @@ export default class Favourites {
 
   addFav(id) {
     this.favs.push(id);
-    this.saveToLS();
+    // this.saveToLS();
   }
 
   removeFav(id) {
     const index = this.favs.indexOf(id);
     if (index !== -1) this.favs.splice(index, 1);
-    this.saveToLS();
+    // this.saveToLS();
   }
 
   isFav(id) {
@@ -23,9 +23,9 @@ export default class Favourites {
     this.isFav(id) ? this.removeFav(id) : this.addFav(id);
   }
 
-  saveToLS() {
-    localStorage.setItem('favs', JSON.stringify(this.favs))
-  }
+  // saveToLS() {
+  //   localStorage.setItem('favs', JSON.stringify(this.favs))
+  // }
 
   readStorage() {
     const storageFavs = JSON.parse(localStorage.getItem('favs'));

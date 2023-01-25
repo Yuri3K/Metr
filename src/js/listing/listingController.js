@@ -6,14 +6,14 @@ export default function (state) {
 
   state.results.forEach(item => {
     view.renderCard(item, state.favourites.isFav(item.id))
-    addListenerToFav();
   })
+  addListenerToFav();
 
   state.emitter.subscribe('event:render-listing', () => {
     view.clearListingContainer();
     state.results.forEach(item => {
       view.renderCard(item, state.favourites.isFav(item.id))
-      addListenerToFav()
+      // addListenerToFav()
     })
   })
 
@@ -21,6 +21,7 @@ export default function (state) {
     Array.from(document.getElementsByClassName('card__like')).forEach(item => {
       item.addEventListener('click', (event) => {
         event.preventDefault();
+        console.log(123)
         // event.stopPropagation();
         const currentId = event.target.closest('.card').dataset.id;
 
