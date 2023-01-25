@@ -1,6 +1,8 @@
-export default function () {
+import favouritesCard from './../favouritesCards/favouritesCardsController';
 
-  let markup = `<h1>Favourites Page</h1>`
-  document.querySelector('#app').innerHTML = markup;
+export default function (state) {
+
+  document.querySelector('#app').innerHTML = '';
+  favouritesCard(state);
 
 }

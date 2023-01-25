@@ -18,9 +18,10 @@ export default function (state) {
   })
 
   function addListenerToFav() {
-    Array.prototype.forEach.call(document.getElementsByClassName('card__like'), (item) => {
+    Array.from(document.getElementsByClassName('card__like')).forEach(item => {
       item.addEventListener('click', (event) => {
         event.preventDefault();
+        // event.stopPropagation();
         const currentId = event.target.closest('.card').dataset.id;
 
         state.favourites.toggleFav(currentId)
