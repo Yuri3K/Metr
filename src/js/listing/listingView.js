@@ -11,8 +11,6 @@ export function render() {
 
 export function renderCard(object, isFav) {
 
-  // console.log(isFav)
-
   const markup = `<article class="col-md-4">
                         <!-- card -->
                         <a href="#/item/${object.id}" class="card" data-id="${object.id}">

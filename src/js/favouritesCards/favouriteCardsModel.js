@@ -4,8 +4,14 @@ export default class FavouriteCards {
   }
 
   async getCards() {
-    const ids = this.idsList.split('').join(',')
-    console.log(ids)
-    const queryString = `https://jsproject.webcademy.ru/items?${ids}`
+    try {
+      const ids = this.idsList.join(',');
+      const queryString = `https://jsproject.webcademy.ru/items?ids=${ids}`
+      const response = await fetch(queryString);
+      const data = await response.json();
+      this.cards = await data;
+    } catch (error) {
+      alert(error)
+    }
   }
 }

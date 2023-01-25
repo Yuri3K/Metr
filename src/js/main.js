@@ -12,7 +12,7 @@ const state = {
   favourites: new Favs(),
 };
 
-window.state = state
+// window.state = state
 
 const routes = [
   { route: '/', component: Homepage },
